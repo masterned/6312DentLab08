@@ -1,10 +1,13 @@
-package edu.westga.cs6312.files.model;
+package edu.westga.cs6312.files.testing.teammanager;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
+
+import edu.westga.cs6312.files.model.Team;
+import edu.westga.cs6312.files.model.TeamManager;
 
 /**
  * Provides unit tests to verify the expected behavior of TeamManager's addTeam
