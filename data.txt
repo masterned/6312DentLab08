@@ -1,2 +1,7 @@
 Aye-ayes, 10, 0
 Fossas, 5, 5
+Gerenuks
+Mole rats, 0, 0
+Babirusas, -1, 0
+Lampreys, 2, 3
+Dugongs, 9, 1
