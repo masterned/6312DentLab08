@@ -25,10 +25,10 @@ public class Team implements Comparable<Team> {
 			throw new IllegalArgumentException("Invalid name");
 		}
 		if (newNumberOfWins < 0) {
-			throw new IllegalArgumentException("Invalid number of wins");
+			throw new IllegalArgumentException("Wins must be positive");
 		}
 		if (newNumberOfLosses < 0) {
-			throw new IllegalArgumentException("Invalid number of losses");
+			throw new IllegalArgumentException("Losses must be positive");
 		}
 
 		this.name = newName;
