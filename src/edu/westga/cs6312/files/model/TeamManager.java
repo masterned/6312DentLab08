@@ -23,6 +23,7 @@ public class TeamManager {
 	 * Adds a new team to the list of teams.
 	 * 
 	 * @param newTeam - the new team to be added to the list
+	 * @precondition newTeam != null
 	 */
 	public void addTeam(Team newTeam) {
 		if (newTeam == null) {

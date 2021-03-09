@@ -18,9 +18,10 @@ public class Team implements Comparable<Team> {
 	 * @param newName           - the name of the new team
 	 * @param newNumberOfWins   - the number of times the new team has won
 	 * @param newNumberOfLosses - the number of times the new team has lost
+	 * @precondition newName != null
 	 */
 	public Team(String newName, int newNumberOfWins, int newNumberOfLosses) {
-		if (newName == null || newName.length() < 2) {
+		if (newName == null) {
 			throw new IllegalArgumentException("Invalid name");
 		}
 		if (newNumberOfWins < 0) {
@@ -73,6 +74,7 @@ public class Team implements Comparable<Team> {
 	 * 
 	 * @return an integer describing whether the team should come before or after
 	 *         the other team
+	 * @precondition otherTeam != null
 	 */
 	@Override
 	public int compareTo(Team otherTeam) {

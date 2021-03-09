@@ -74,6 +74,12 @@ public class TeamTUI {
 		this.keyboard.close();
 	}
 
+	/**
+	 * Prompts the user and returns their input.
+	 * 
+	 * @param message - the prompt to be printed to the console
+	 * @return the user's input
+	 */
 	private String getUserInput(String message) {
 		System.out.print(message);
 		String userInput = this.keyboard.nextLine();
@@ -99,7 +105,6 @@ public class TeamTUI {
 				isValid = true;
 			} catch (NumberFormatException numberFormatException) {
 				System.out.println("That wasn't a valid integer. Please try again.");
-				System.out.println();
 			}
 		} while (!isValid);
 
