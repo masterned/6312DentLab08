@@ -1,6 +1,7 @@
 package edu.westga.cs6312.files.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Provides a model to work with a list of Teams.
@@ -58,5 +59,12 @@ public class TeamManager {
 		}
 
 		return output.trim();
+	}
+
+	/**
+	 * Sorts the list of teams.
+	 */
+	public void sortTeams() {
+		Collections.sort(this.listOfTeams);
 	}
 }
