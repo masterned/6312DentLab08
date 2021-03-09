@@ -59,4 +59,17 @@ public class TeamWhenGetWinningPercentage {
 
 		assertEquals(0.666, actualWinningPercentage, 3);
 	}
+
+	/**
+	 * Tests the case where the total number of games played is zero (resulting in
+	 * weirdness to to how floating point numbers handle division by zero). It
+	 * should return 0.0.
+	 */
+	@Test
+	public void testGetWinningPercentageWhenTotalNumberOfGamesIs0ShouldReturn0() {
+		Team noGames = new Team("No Games", 0, 0);
+		double actualWinningPercentage = noGames.getWinningPercentage();
+
+		assertEquals(0.0, actualWinningPercentage);
+	}
 }

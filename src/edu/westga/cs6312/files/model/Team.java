@@ -43,7 +43,13 @@ public class Team implements Comparable<Team> {
 	 * @return the ratio of number of games won to total number of games
 	 */
 	public double getWinningPercentage() {
-		return (double) this.numberOfWins / (double) (this.numberOfWins + this.numberOfLosses);
+		double totalGames = (double) this.numberOfWins + this.numberOfLosses;
+
+		if (totalGames == 0.0) {
+			return totalGames;
+	}
+
+		return this.numberOfWins / totalGames;
 	}
 
 	/**
