@@ -173,6 +173,10 @@ public class TeamTUI {
 
 	/**
 	 * Writes the sorted teams out to the user specified file.
+	 * 
+	 * I would normally create a switch statement for user selection, but as
+	 * overwriting a file can be a dangerous operation, I have deliberately made it
+	 * a bit more tedious than a numeric selection.
 	 */
 	private void saveSortedTeamsToFile() {
 		this.primaryTeamManager.sortTeams();
@@ -181,14 +185,18 @@ public class TeamTUI {
 
 		File outputFile = new File(userSpecifiedPath);
 
+		boolean overwrite = false;
+
 		if (outputFile.exists()) {
 			System.out.println("Warning: " + userSpecifiedPath + " already exists.");
 			String userAffirmation = this
 					.getUserInput("Would you like to overwrite? (if so send \"yes\" without quotes): ");
-			if (!userAffirmation.equals("yes")) {
-				System.out.println("Aborting. Returning to menu.");
-				return;
-			}
+			overwrite = userAffirmation.equals("yes");
+		}
+
+		if (!overwrite) {
+			System.out.println("Aborting. Returning to menu.");
+			return;
 		}
 
 		try {
