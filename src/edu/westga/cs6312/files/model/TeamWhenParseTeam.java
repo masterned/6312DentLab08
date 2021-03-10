@@ -1,8 +1,10 @@
-package edu.westga.cs6312.files.model;
+package edu.westga.cs6312.files.testing.team;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+
+import edu.westga.cs6312.files.model.Team;
 
 /**
  * Provides unit tests to verify the expected behavior of Team's parseTeam
