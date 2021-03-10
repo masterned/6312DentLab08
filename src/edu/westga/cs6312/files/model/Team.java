@@ -19,6 +19,7 @@ public class Team implements Comparable<Team> {
 	 * @param newNumberOfWins   - the number of times the new team has won
 	 * @param newNumberOfLosses - the number of times the new team has lost
 	 * @precondition newName != null
+	 * @throws IllegalArgumentException
 	 */
 	public Team(String newName, int newNumberOfWins, int newNumberOfLosses) {
 		if (newName == null) {
@@ -81,6 +82,7 @@ public class Team implements Comparable<Team> {
 	 * @return an integer describing whether the team should come before or after
 	 *         the other team
 	 * @precondition otherTeam != null
+	 * @throws IllegalArgumentException
 	 */
 	@Override
 	public int compareTo(Team otherTeam) {
@@ -104,10 +106,15 @@ public class Team implements Comparable<Team> {
 	 * non-comma characters, and the other two values must be able to be converted
 	 * into integers (also no).
 	 * 
+	 * The catch and re-throw is deliberate in order to attach a more descriptive
+	 * message to the error.
+	 * 
 	 * @param rawTeamString - the String to be converted into a new Team
 	 * @return the new Team
 	 * @precondition rawTeamString != null
 	 * @precondition rawTeamString in form /^.*\s*,\s*-?\d+\s*,\s*-?\d+\s*$/
+	 * @throws IllegalArgumentException
+	 * @throws NumberFormatException
 	 */
 	public static Team parseTeam(String rawTeamString) throws IllegalArgumentException, NumberFormatException {
 		if (rawTeamString == null) {

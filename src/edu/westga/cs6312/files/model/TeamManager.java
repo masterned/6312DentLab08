@@ -24,6 +24,7 @@ public class TeamManager {
 	 * 
 	 * @param newTeam - the new team to be added to the list
 	 * @precondition newTeam != null
+	 * @throws IllegalArgumentException
 	 */
 	public void addTeam(Team newTeam) {
 		if (newTeam == null) {
