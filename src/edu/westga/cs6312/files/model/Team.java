@@ -47,7 +47,7 @@ public class Team implements Comparable<Team> {
 
 		if (totalGames == 0.0) {
 			return totalGames;
-	}
+		}
 
 		return this.numberOfWins / totalGames;
 	}
@@ -95,5 +95,48 @@ public class Team implements Comparable<Team> {
 		}
 
 		return Integer.compare(otherTeam.getNumberOfWins(), this.numberOfWins);
+	}
+
+	/**
+	 * Takes a String and converts it into a Team object.
+	 * 
+	 * Must have 3 values separated by commas: the first value can be any string of
+	 * non-comma characters, and the other two values must be able to be converted
+	 * into integers (also no).
+	 * 
+	 * @param rawTeamString - the String to be converted into a new Team
+	 * @return the new Team
+	 * @precondition rawTeamString != null
+	 * @precondition rawTeamString in form /^.*\s*,\s*-?\d+\s*,\s*-?\d+\s*$/
+	 */
+	public static Team parseTeam(String rawTeamString) throws IllegalArgumentException, NumberFormatException {
+		if (rawTeamString == null) {
+			throw new IllegalArgumentException("Invalid team");
+		}
+
+		rawTeamString = rawTeamString.trim();
+		String[] rawTeamParts = rawTeamString.split(",");
+
+		if (rawTeamParts.length != 3) {
+			throw new IllegalArgumentException("Invalid team read");
+		}
+
+		String newTeamName = rawTeamParts[0].trim();
+
+		int newTeamNumberOfWins = 0;
+		try {
+			newTeamNumberOfWins = Integer.parseInt(rawTeamParts[1].trim());
+		} catch (NumberFormatException winsNotANumber) {
+			throw new NumberFormatException("Wins must be a number");
+		}
+
+		int newTeamNumberOfLosses = 0;
+		try {
+			newTeamNumberOfLosses = Integer.parseInt(rawTeamParts[2].trim());
+		} catch (NumberFormatException lossesNotANumber) {
+			throw new NumberFormatException("Losses must be a number");
+		}
+
+		return new Team(newTeamName, newTeamNumberOfWins, newTeamNumberOfLosses);
 	}
 }
