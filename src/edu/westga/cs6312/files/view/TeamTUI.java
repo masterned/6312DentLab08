@@ -2,6 +2,7 @@ package edu.westga.cs6312.files.view;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 import edu.westga.cs6312.files.model.Team;
@@ -143,7 +144,7 @@ public class TeamTUI {
 
 				try {
 					Team newTeam = Team.parseTeam(currentLine);
-					
+
 					this.primaryTeamManager.addTeam(newTeam);
 
 					System.out.println(newTeam);
@@ -177,6 +178,31 @@ public class TeamTUI {
 		this.primaryTeamManager.sortTeams();
 
 		String userSpecifiedPath = this.getUserInput("Enter output file name: ");
+
+		File outputFile = new File(userSpecifiedPath);
+
+		if (outputFile.exists()) {
+			System.out.println("Warning: " + userSpecifiedPath + " already exists.");
+			String userAffirmation = this
+					.getUserInput("Would you like to overwrite? (if so send \"yes\" without quotes): ");
+			if (!userAffirmation.equals("yes")) {
+				System.out.println("Aborting. Returning to menu.");
+				return;
+			}
+		}
+
+		try {
+			PrintWriter outputFileWriter = new PrintWriter(outputFile);
+
+			for (Team currentTeam : this.primaryTeamManager.getTeams()) {
+				outputFileWriter.println(currentTeam);
+			}
+
+			outputFileWriter.close();
+		} catch (Exception otherException) {
+			System.out.println("Something went wrong. Returning to main menu.");
+			return;
+		}
 
 		System.out.println("Teams saved");
 	}
