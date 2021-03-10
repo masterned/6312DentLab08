@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import edu.westga.cs6312.files.model.Team;
 import edu.westga.cs6312.files.model.TeamManager;
 
 /**
@@ -137,10 +138,18 @@ public class TeamTUI {
 
 			String currentLine;
 
-			// TODO: create Team objects from each line and add them to the TeamManager
 			while (inputFileScanner.hasNextLine()) {
 				currentLine = inputFileScanner.nextLine();
-				System.out.println(currentLine);
+
+				try {
+					Team newTeam = Team.parseTeam(currentLine);
+					
+					this.primaryTeamManager.addTeam(newTeam);
+
+					System.out.println(newTeam);
+				} catch (Exception exceptionCatchAll) {
+					System.out.println("~~ " + exceptionCatchAll.getMessage() + ": " + currentLine);
+				}
 			}
 
 			inputFileScanner.close();
