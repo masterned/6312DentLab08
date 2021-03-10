@@ -199,6 +199,8 @@ public class TeamTUI {
 			}
 
 			outputFileWriter.close();
+		} catch (FileNotFoundException fileNotFoundException) {
+			System.out.println("The output file could not be created. Returning to main menu.");
 		} catch (Exception otherException) {
 			System.out.println("Something went wrong. Returning to main menu.");
 			return;
